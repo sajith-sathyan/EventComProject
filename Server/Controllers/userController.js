@@ -774,7 +774,7 @@ module.exports.createCheckoutSession = async (req, res) => {
   console.log("TicketInfo.TotalPrice--------->", TicketInfo.TotalPrice);
   const BaseUrl = process.env.REACT_APP_BASE_URL;
   const successUrl =
-    `${BaseUrl}/EventTicket?` + queryString.stringify(TicketInfo)||"www.eventcom.online/EventTicket?" + queryString.stringify(TicketInfo)
+    `${BaseUrl}/EventTicket?` + queryString.stringify(TicketInfo)||"http://eeventcom.online/EventTicket?" + queryString.stringify(TicketInfo)
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -790,7 +790,7 @@ module.exports.createCheckoutSession = async (req, res) => {
     ],
     mode: "payment",
     success_url: successUrl,
-    cancel_url: "http://localhost:3000" || "www.eventcom.online",
+    cancel_url: "http://localhost:3000" || "http://eeventcom.online",
   });
 
   console.log("session.url ----->", session.url);
