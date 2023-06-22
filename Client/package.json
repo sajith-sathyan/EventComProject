@@ -1,7 +1,7 @@
 {
   "name": "eventcom",
   "version": "0.1.0",
-  "private": true,
+  "homepage":".",
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.0",
     "@ckeditor/ckeditor5-build-classic": "^37.1.0",
@@ -40,7 +40,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
