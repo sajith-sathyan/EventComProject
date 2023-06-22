@@ -14,4 +14,5 @@ function unique(str){
 }
 
 let ans =unique(str)
-console.log(ans)    
+console.log(ans)   
+console.log("first git push test") 
