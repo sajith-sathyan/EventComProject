@@ -6,11 +6,17 @@ function AdminProtectedRoute({ component: Component, ...rest }) {
   const [isAdmin, setIsAdmin] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const Navigate = useNavigate()
+
+  const baseURL = process.env.REACT_APP_BASE_URL;
+  // Create an Axios instance
+  const axiosInstance = axios.create({
+    baseURL: baseURL,
+  });
   useEffect(() => {
     const checkToken = async () => {
       try {
-        const {data} = await axios.get(
-          "http://localhost:4000/admin/getAdminData",
+        const {data} = await axiosInstance.get(
+          "/admin/getAdminData",
           { withCredentials: true }
         );
         const adminData = data.adminData[0];
