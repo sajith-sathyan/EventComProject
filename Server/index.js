@@ -35,8 +35,8 @@ mongoose
 
 app.use(
   cors({
-    origin: ["http://localhost:3000" || "www.eeventcom.online"],
-    methods: ["GET", "POST"],
+    origin: ["http://localhost:3000" ||  "http://eeventcom.online" ],
+    methods: ["GET", "POST"], 
     credentials: true,
   })
 );
