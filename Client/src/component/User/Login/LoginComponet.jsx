@@ -27,6 +27,12 @@ function LoginForm() {
     toast.error(error, {
       position: "bottom-right",
     });
+
+    const baseURL = process.env.REACT_APP_BASE_URL;
+    // Create an Axios instance
+    const axiosInstance = axios.create({
+      baseURL: baseURL,
+    });
   // localStorage.removeItem("accessToken");
   // localStorage.removeItem("refreshToken");
   // submit the form
@@ -41,8 +47,8 @@ function LoginForm() {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/login",
+      const { data } = await axiosInstance.post(
+        "/login",
         {
           ...values,
         },
@@ -110,8 +116,8 @@ function LoginForm() {
   };
 
   const validateUser = async (token) => {
-    const res = await axios.post(
-      "http://localhost:4000/google",
+    const res = await axiosInstance.post(
+      "/google",
       {},
       {
         headers: {

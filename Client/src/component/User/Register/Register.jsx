@@ -43,6 +43,12 @@ function LoginForm() {
       return;
     }
 
+    const baseURL = process.env.REACT_APP_BASE_URL;
+    // Create an Axios instance
+    const axiosInstance = axios.create({
+      baseURL: baseURL,
+    });
+
     // function for add userid in localstorage
 
     const setItemLocalStorage = (userId) => {
@@ -64,8 +70,8 @@ function LoginForm() {
     };
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/register",
+      const { data } = await axiosInstance.post(
+        "/register",
         {
           ...values,
         },
@@ -136,8 +142,8 @@ function LoginForm() {
    };
  
    const validateUser = async (token) => {
-     const res = await axios.post(
-       "http://localhost:4000/google",
+     const res = await axiosInstance.post(
+       "/google",
        {},
        {
          headers: {
