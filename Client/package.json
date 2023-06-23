@@ -1,7 +1,7 @@
 {
   "name": "eventcom",
   "version": "0.1.0",
-  "homepage":".",
+  "private": true,
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.0",
     "@ckeditor/ckeditor5-build-classic": "^37.1.0",
