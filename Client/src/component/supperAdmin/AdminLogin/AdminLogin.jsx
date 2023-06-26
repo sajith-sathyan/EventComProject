@@ -11,12 +11,13 @@ function MyApp() {
   const [email, setEmail] = useState("");
   const [loginError, setLoginError] = useState(null);
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const generateError = (error) =>
     toast.error(error, {
       position: "bottom-right",
     });
+
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
@@ -53,12 +54,12 @@ function MyApp() {
               const { email, password } = data.errors;
               if (email) setLoginError(email);
               else if (password) setLoginError(password);
-            } else if(data.Admin){
+            } else if (data.Admin) {
               dispatch(
                 loggedAdmin({
-                  email:data.Admin.email
+                  email: data.Admin.email,
                 })
-              )
+              );
               navigate("/admin/dashboard");
             }
           }
@@ -140,13 +141,16 @@ function MyApp() {
             >
               Login
             </button>
-            {loginError !=null && (
+            {loginError != null && (
               <div
-              role="alert"
-              className="rounded border-s-4 border-red-500 bg-red-50 p-4"
-            >
-              <strong className="block font-medium text-red-800"> {loginError}</strong>
-            </div>
+                role="alert"
+                className="rounded border-s-4 border-red-500 bg-red-50 p-4"
+              >
+                <strong className="block font-medium text-red-800">
+                  {" "}
+                  {loginError}
+                </strong>
+              </div>
             )}
           </div>
         </div>

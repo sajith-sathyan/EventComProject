@@ -22,7 +22,11 @@ function LoginForm() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
-
+  const baseURL = process.env.REACT_APP_BASE_URL;
+    // Create an Axios instance
+    const axiosInstance = axios.create({
+      baseURL: baseURL,
+    });
   const [values, setValues] = useState({
     Status: "active",
     email: "",
@@ -43,11 +47,7 @@ function LoginForm() {
       return;
     }
 
-    const baseURL = process.env.REACT_APP_BASE_URL;
-    // Create an Axios instance
-    const axiosInstance = axios.create({
-      baseURL: baseURL,
-    });
+  
 
     // function for add userid in localstorage
 

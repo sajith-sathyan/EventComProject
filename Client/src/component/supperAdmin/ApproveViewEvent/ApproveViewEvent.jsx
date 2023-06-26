@@ -48,7 +48,7 @@ export default (props) => {
         <div className="relative w-full max-w-lg mx-auto bg-white rounded-md shadow-lg">
           <div className="flex items-center justify-between p-4 border-b">
             <h4 className="text-lg font-medium text-gray-800">
-              Terms and agreements
+            Event Detials
             </h4>
             <button
               className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
@@ -76,7 +76,7 @@ export default (props) => {
                   {allData != null && (
                     <img
                       className="object-cover object-center w-full h-80 xl:h-[28rem] rounded-xl"
-                      src={BasicInfoData.eventImgUrl}
+                      src={BasicInfoData[0].eventImgUrl}
                       alt=""
                     />
                   )}
@@ -87,7 +87,7 @@ export default (props) => {
                     <h1 className="max-w-lg mt-4 text-2xl font-semibold leading-tight text-gray-800 dark:text-white">
                       {allData != null && (
                         <h1 className="font-semibold text-gray-800 text-3xl md:text-4xl">
-                          {BasicInfoData.eventTitle}
+                          {BasicInfoData[0].eventTitle}
                         </h1>
                       )}
                     </h1>
@@ -106,7 +106,7 @@ export default (props) => {
 
                         {user!=null &&(
                           <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {user.username}
+                          {user[0].username}
                         </p>
                         )}
                       </div>
@@ -122,7 +122,7 @@ export default (props) => {
                     <h6 className="font-semibold text-gray-800 text-xl md:text-xl">
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: EvetnMeidaData.description,
+                          __html: EvetnMeidaData[0].description,
                         }}
                       ></div>
                     </h6>

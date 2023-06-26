@@ -38,7 +38,7 @@ function ApproveEventList(props) {
     };
     changeApproveStatus(eventId);
   };
-  console.log("checkedItems----->", checkedItems);
+  console.log("eventData----->", eventData);
 
   const viewEvent =(id) =>{
     setShowEvnet(!showEvent)
@@ -99,11 +99,11 @@ function ApproveEventList(props) {
                         View
                         </button>
 
-                        <button 
+                        <a  href={`/organizations/${event._id}/editEvent`} 
                         onClick={handleEdit}
                         className="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative">
                           Edit
-                        </button>
+                        </a>
                       </span>
 
                       {event.EventStatus === "Approved" ? (
