@@ -148,6 +148,7 @@ function ApproveEventList(props) {
         </div>
       </section>
       {showEdit &&(<EditEvents  allEventData={allEventData}/>)}
+      {/* {showEdit &&(<EditEvents  allEventData={allEventData}/>)} */}
     </div>
   );
 }
