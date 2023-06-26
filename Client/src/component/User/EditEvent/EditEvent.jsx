@@ -306,7 +306,7 @@ function  EditEvent(props) {
   const [free, setFree] = useState(false);
   const [paid, setPaid] = useState(false);
   console.log("allEventData................>>" ,allEventData.TicketData)
-  // const [name, setName] = useState(
+  // const [name, setName] = useState(  
   //   allEventData.TicketData.Addmission[index].name
   // );
   // const [quantity, setQuantity] = useState(
