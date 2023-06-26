@@ -62,7 +62,7 @@ router.get("/getBasicInfoByEventMediaId",getBasicInfoByEventMediaId);
 router.get("/getTicket",getTicket);
 router.get("/GetAllEventDetialsByBasicInfoID", GetAllEventDetialsByBasicInfoID);
 router.get("/getTemporayDataBase",getTemporayDataBase);
-router.get("/getBookedUserDetials", verifyToken,getBookedUserDetials);
+router.get("/getBookedUserDetials",getBookedUserDetials);
 // router.get("/protected", authenticateToken, protected);
 router.get("/getDataFromSelledTicket", getDataFromSelledTicket, protected);
 router.get("/GetSelledTicketData", GetSelledTicketData);
