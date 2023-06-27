@@ -30,12 +30,12 @@ const Banner = () => {
           <p className="text-2xl mb-10 leading-none">
             Atractive designs for your brand
           </p>
-          <a
+          {/* <a
             href="#"
             className="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800"
           >
             Contact us
-          </a>
+          </a> */}
         </div>
       </div>
     </>

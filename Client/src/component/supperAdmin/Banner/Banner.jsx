@@ -27,7 +27,9 @@ const [render ,setRender ]= useState(true)
   const axiosInstance = axios.create({
     baseURL: baseURL,
   });
-
+useEffect(()=>{
+  fetchBanner()
+},[deleteUrlFromDataBase,url])
   const handleImageSubmit = (e) => {
     try {
       const imageRef = ref(storage, Image.name);
@@ -39,7 +41,7 @@ const [render ,setRender ]= useState(true)
 
               setUrl(url);
               setShowFile(false);
-               
+              fetchBanner ()
             })
             .catch((error) => {
               console.log(error.message);
@@ -53,30 +55,45 @@ const [render ,setRender ]= useState(true)
       console.log(err);
     }
   };
- 
+  const fetchBanner = async () => {
+     
+    try {
+      const { data } = await axiosInstance.get("/admin/getBanner");
+      console.log("---------", data);
+      if (data && data.BannerUrl) {
+        if(render){
+          setBanner(data);
+          setRender(false)
+        }
+       
+      } else {
+        setBanner(null);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-
+  const deleteUrlFromDataBase = async (url) => {
+    try {
+      const { data } = await axiosInstance.post(
+        "/admin/DeleteBannerUrl",
+        { url },
+        { withCredentials: true }
+      );
+      setRender(true)
+      if(data){
+        fetchBanner();
+      }
+     
+    } catch (err) {
+      console.log(err);
+    }
+  };
  // Rerender when the state variable changes
 
   useEffect(() => {
-    const fetchBanner = async () => {
-     
-      try {
-        const { data } = await axiosInstance.get("/admin/getBanner");
-        console.log("---------", data);
-        if (data && data.BannerUrl) {
-          if(render){
-            setBanner(data);
-            setRender(false)
-          }
-         
-        } else {
-          setBanner(null);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    
     const addImage = async (url) => {
       try {
         const { data } = await axiosInstance.post(
@@ -105,20 +122,8 @@ const [render ,setRender ]= useState(true)
       }
     };
 
-    const deleteUrlFromDataBase = async (url) => {
-      try {
-        const { data } = await axiosInstance.post(
-          "/admin/DeleteBannerUrl",
-          { url },
-          { withCredentials: true }
-        );
-        setRender(true)
-        fetchBanner();
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
+    
+    deleteUrlFromDataBase(url)
     fetchBanner()
     if (selectBanner != null) {
       chooseBanner(selectBanner);
@@ -139,12 +144,15 @@ const [render ,setRender ]= useState(true)
   const deleteImageUrl = (url) => {
     setDeleteUrl(url);
   };
+  const renderPage = () =>{
+    window.location.reload()
+  }
 
   console.log("banner--->", banner);
   return (
     <div>
       <div className="2xl:mx-auto 2xl:container 2xl:px-20 xl:px-12 sm:px-6 px-4 py-16">
-        <h1 className="lg:text-4xl text-3xl font-semibold leading-9 text-gray-800">
+        <h1 onClick={renderPage} className="lg:text-4xl text-3xl font-semibold leading-9 text-gray-800">
           Banner
         </h1>
         <br />
