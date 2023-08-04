@@ -7,8 +7,9 @@ const userRoute = require("./routes/userRoutes");
 const adminRoute = require("./routes/adminRoute");
 
 const app = express();
+const  port = process.env.PORT
 
-app.listen(4000, (err) => {
+app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {
